@@ -38,10 +38,10 @@ jobs:
           IMAGE_NAME=${{ secrets.DOCKERHUB_USERNAME }}/mlops-app:latest
           docker push $IMAGE_NAME
       
-      - name: Test SSH key format
-        run: |
-         echo "${{ secrets.SSH_PRIVATE_KEY }}" | head -n 5
-         ssh -i key.pem ubuntu@13.235.104.41 #  Test SSH connection to EC2 instance (replace with your instance's IP) 
+      # - name: Test SSH key format
+      #   run: |
+      #    echo "${{ secrets.SSH_PRIVATE_KEY }}" | head -n 5
+      #    ssh -i key.pem ubuntu@13.235.104.41 #  Test SSH connection to EC2 instance (replace with your instance's IP) 
 
       # 6. Deploy to EC2 via SSH
       - name: Deploy to EC2
@@ -56,7 +56,7 @@ jobs:
             IMAGE_NAME=${{ secrets.DOCKERHUB_USERNAME }}/mlops-app:latest
 
             echo "===== Docker Login ====="
-            echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+            echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
 
             echo "===== Pull Latest Image ====="
             docker pull $IMAGE_NAME
