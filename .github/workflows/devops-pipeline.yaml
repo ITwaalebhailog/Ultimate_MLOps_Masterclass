@@ -41,7 +41,7 @@ jobs:
       - name: Test SSH key format
         run: |
          echo "${{ secrets.SSH_PRIVATE_KEY }}" | head -n 5
-         ssh -i key.pem ubuntu@13.235.104.41
+         ssh -i key.pem ubuntu@13.235.104.41 #  Test SSH connection to EC2 instance (replace with your instance's IP) 
 
       # 6. Deploy to EC2 via SSH
       - name: Deploy to EC2
