@@ -23,7 +23,7 @@ jobs:
         run: |
           IMAGE_NAME=${{ secrets.DOCKERHUB_USERNAME }}/mlops-app:latest
           ls -la
-          docker build -t $IMAGE_NAME -f ./Docker/Dockerfile .
+          docker build -t $IMAGE_NAME -f ./Docker
 
       # 4. Login to DockerHub
       - name: Login to DockerHub
