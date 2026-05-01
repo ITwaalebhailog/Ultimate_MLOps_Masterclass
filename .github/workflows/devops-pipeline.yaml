@@ -18,23 +18,24 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      # 3. Login to DockerHub
-      - name: Login to DockerHub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
-      # 4. Build Image
+      # 3. Build Image
       - name: Build Docker Image
         run: |
           IMAGE_NAME=${{ secrets.DOCKERHUB_USERNAME }}/mlops-app:latest
           docker build -t $IMAGE_NAME -f Docker/Dockerfile .
 
+      # 4. Login to DockerHub
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
       # 5. Push Image
       - name: Push Docker Image
         run: |
           IMAGE_NAME=${{ secrets.DOCKERHUB_USERNAME }}/mlops-app:latest
+          ls -la
           docker push $IMAGE_NAME
 
       # 6. Deploy to EC2 via SSH
