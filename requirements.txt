@@ -11,5 +11,5 @@ sagemaker==2.245.0
 #matplotlib
 #seaborn
 #kaggle
-mlflow
-boto3
+#mlflow
+#boto3

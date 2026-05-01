@@ -1,1 +1,28 @@
+# 1. Use a slim version to reduce image size (better for AWS ECR/K8s)
+FROM python:3.10-slim
 
+# 2. Install system dependencies (needed for some ML libs like Scikit-learn or XGBoost)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# 3. Cache dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# 4. Copy Models first (if they are large and static, this saves time)
+COPY models/ /app/models/
+
+# 5. Copy Application code
+# Instead of copying the whole folder into a subfolder, copy the contents 
+COPY Diabetes-Application/ /app/
+
+# 6. Set Environment Variables
+ENV PYTHONUNBUFFERED=1
+
+EXPOSE 5000
+
+# 7. Use CMD for flexibility
+CMD ["python", "app.py"]
