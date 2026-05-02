@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: diabetes-ml-sts
+spec:
+  serviceName: diabetes-ml-service
+  replicas: 1
+  selector:
+    matchLabels:
+      app: diabetes-ml
+  template:
+    metadata:
+      labels:
+        app: diabetes-ml
+    spec:
+      containers:
+      - name: diabetes-ml-container
+        image: diabetes-ml
+        volumeMounts:
+        - name: diabetes-ml-storage
+          mountPath: /data
+  volumeClaimTemplates:
+  - metadata:
+      name: diabetes-ml-storage
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi

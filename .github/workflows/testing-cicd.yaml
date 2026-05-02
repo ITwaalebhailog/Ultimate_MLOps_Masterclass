@@ -1,4 +1,4 @@
-name: Simple CI/CD Demo Pipeline
+name: Testing CI/CD Pipeline
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - test-cicd
 
 jobs:
-  demo-pipeline:
+  CI/CD-pipeline:
     runs-on: ubuntu-latest
 
     steps:
