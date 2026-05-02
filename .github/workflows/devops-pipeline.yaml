@@ -67,7 +67,7 @@ jobs:
 
             echo "===== Run New Container ====="
             docker run -d \
-              --name mlops-app:latest \
+              --name mlops-app-latest \
               -p 5000:5000 \
               --restart always \
               zoheb007/mlops-app:latest
