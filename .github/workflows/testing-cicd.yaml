@@ -6,8 +6,8 @@ on:
       - test-cicd
 
 jobs:
-  CI/CD-pipeline:
-    runs-on: ubuntu-latest
+  demo-pipeline:
+    runs-on: ubuntu-latest #ubuntu-latest
 
     steps:
       # 🔹 Stage 1: Checkout Code
