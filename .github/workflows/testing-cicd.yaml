@@ -1,0 +1,45 @@
+name: Simple CI/CD Demo Pipeline
+
+on:
+  push:
+    branches:
+      - test-cicd
+
+jobs:
+  demo-pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 🔹 Stage 1: Checkout Code
+      - name: 1. Checkout Code
+        uses: actions/checkout@v4
+
+      # 🔹 Stage 2: Setup Python
+      - name: 2. Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      # 🔹 Stage 3: Install Dependencies
+      - name: 3. Install Dependencies
+        run: |
+          echo "Installing dependencies..."
+          pip install -r requirements.txt
+
+      # 🔹 Stage 4: Run Tests (Dummy)
+      - name: 4. Run Tests
+        run: |
+          echo "Running tests..."
+          python -c "print('All tests passed ✅')"
+
+      # 🔹 Stage 5: Build Docker Image
+      - name: 5. Build Docker Image
+        run: |
+          echo "Building Docker Image..."
+          echo "Docker Image built successfully 🐳"
+
+      # 🔹 Stage 6: Simulated Deployment
+      - name: 6. Deploy (Simulation)
+        run: |
+          echo "Deploying application..."
+          echo "App deployed successfully 🚀"
