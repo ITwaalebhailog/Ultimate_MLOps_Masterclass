@@ -67,10 +67,10 @@ jobs:
 
             echo "===== Run New Container ====="
             docker run -d \
-              --name $IMAGE_NAME \
+              --name mlops-app:latest \
               -p 5000:5000 \
               --restart always \
-              $IMAGE_NAME
+              zoheb007/mlops-app:latest
 
             echo "===== Cleanup Old Images ====="
             docker image prune -f
