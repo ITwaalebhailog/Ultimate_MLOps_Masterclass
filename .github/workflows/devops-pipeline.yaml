@@ -62,8 +62,8 @@ jobs:
             docker pull $IMAGE_NAME
 
             echo "===== Stop Old Container ====="
-            docker stop $IMAGE_NAME || true
-            docker rm $IMAGE_NAME || true
+            docker stop zoheb007/mlops-app:latest || true
+            docker rm zoheb007/mlops-app:latest || true
 
             echo "===== Run New Container ====="
             docker run -d \
