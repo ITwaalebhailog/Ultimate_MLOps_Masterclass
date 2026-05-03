@@ -25,7 +25,7 @@ def index():
             arr_scaled = scaler.transform(arr)
             pred = model.predict(arr_scaled)[0]
             prob = model.predict_proba(arr_scaled)[0,1]
-            result = "Positive for diabetes" if pred == 1 else "Negative for diabetes"
+            result = "Diabetic" if pred == 1 else "Not Diabetic"
         except Exception as e:
             result = f"Error: {e}"
     return render_template("index.html", features=FEATURES, result=result, prob=prob)
