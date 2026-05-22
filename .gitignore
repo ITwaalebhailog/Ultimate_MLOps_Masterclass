@@ -6,6 +6,12 @@ __pycache__/
 # C extensions
 *.so
 
+#github-actions_key
+github-actions*
+mlruns
+mlflow.db
+activate-mlops-env.sh
+
 # Distribution / packaging
 .Python
 build/
