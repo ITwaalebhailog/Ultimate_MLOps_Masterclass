@@ -47,7 +47,7 @@ pipeline_session = PipelineSession()
 ########### preprocessing of data ##################
 
 sklearn_processor = SKLearnProcessor(
-    framework_version="0.23-1",
+    framework_version="1.2-1",
     role=role,
     instance_type="ml.m5.large",
     instance_count=1, 
@@ -93,7 +93,7 @@ processing_step = ProcessingStep(
 ########  train step ###########
 
 estimator = SKLearn(entry_point='train.py',
-                    framework_version="0.23-1",
+                    framework_version="1.2-1",
                     py_version='py3',
                     instance_type='ml.m5.xlarge',
                     role=role,
@@ -111,11 +111,11 @@ train_step = TrainingStep(
 
 ####### eval and register model and check the condition ######
 image_uri = sagemaker.image_uris.retrieve(
-    framework="xgboost",
-    region="ap-south-1",
-    version="1.0-1",
-    py_version="py3",
-)
+        framework="sklearn",
+        region=region,
+        version=sklearn_version,
+        py_version=py_version
+    )
 
 ##### train artifacts ######
 model_artifact_path = train_step.properties.ModelArtifacts.S3ModelArtifacts
