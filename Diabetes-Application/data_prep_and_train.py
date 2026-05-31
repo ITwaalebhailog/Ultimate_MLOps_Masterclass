@@ -66,7 +66,7 @@ param_grid = {
      "max_depth": [None, 5, 10],
      "min_samples_split": [2, 5],
      "min_samples_leaf": [1, 2],
-}
+} ##
 gs = GridSearchCV(RandomForestClassifier(random_state=42), param_grid,
                    cv=5, scoring="roc_auc", n_jobs=-1, verbose=2)
 gs.fit(X_train_scaled, y_train)
