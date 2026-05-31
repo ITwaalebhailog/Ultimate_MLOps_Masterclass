@@ -6,7 +6,7 @@
     "preprocessing_instance_type": "ml.m5.large",
     "training_instance_type": "ml.m5.large",
     "evaluation_instance_type": "ml.m5.large",
-    "model_package_group_name": "diabetes",
+    "model_package_group_name": "diabetes-1",
     "input_data_default": "s3://main-sagemaker-ml-healthcare/mlops/diabetes.csv",
     "train_output_path": "s3://main-sagemaker-ml-healthcare/mlops/train",
     "test_output_path": "s3://main-sagemaker-ml-healthcare/mlops/test",
