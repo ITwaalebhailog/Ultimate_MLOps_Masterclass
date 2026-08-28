@@ -1,4 +1,4 @@
-# Linux Commands — Organized Cheat Sheet
+# Linux Commands — Organized Cheat Sheets
 
 A concise, topic-wise collection of Linux commands useful for MLOps engineers.
 
