@@ -1,0 +1,5 @@
+Python Lecture Day 5Topic: File HandlingTopic 1: File Handling
+
+Topic 2: Binary Files
+
+Topic 3: Exception Handling
